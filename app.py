@@ -28,20 +28,6 @@ st.write(f"<h1 style='color:white;'>Análise de Reviews da Amazon Alexa</h1>", u
 base = pd.read_csv('data//amazon_alexa.tsv', sep='\t')  # Usando sep='\t' para arquivos TSV
 
 
-#Teste##################################################################################
-# Dados textuais para o carrossel
-
-texts = [
-    f"1. ENTENDENDO OS DADOS: Nossa base de dados agrupa reviews extraídas de dentro do site da Amazon que avaliam uma versão de um dos seus principais produtos, a Alexa.",
-    f"2. Os dados estão divididos em 3150 linhas e 5 colunas onde cada coluna armazena respectivamente um ID da avaliação, a nota que foi dada para o produto(rating), a loja em que o produto foi vendido (variation), a avaliação textual que cada cliente fez do produto comprado(verified_reviews) e por fim um valor booleano para feedback positivo ou negativo(feedback). ",
-    f"3. Aqui, podemos visualizar melhor como de fato os dados estão distribuídos",
-    f"4. Por fim, alguns dados gerais sobre os números obtidos em uma primeira análise dentro do banco de dados."
-        ]
-
-
-
-#Teste #############################################################################
-
 st.write(f"<h2 style='color:white;'>Analisando os gráficos e histogramas do banco de dados</h2>", unsafe_allow_html=True)
 
 st.write(f"<h3 style='color:white;'>Histogramas de rating e feedback</h3>", unsafe_allow_html=True)
