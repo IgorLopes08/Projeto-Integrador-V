@@ -27,8 +27,6 @@ st.write(f"<h1 style='color:white;'>Análise de Reviews da Amazon Alexa</h1>", u
 # Carregar a base de dados
 base = pd.read_csv('data//amazon_alexa.tsv', sep='\t')  # Usando sep='\t' para arquivos TSV
 
-# Título info gerais do banco de dados
-st.write(f"<h2 style='color:white;'>Informações gerais sobre o banco de dados</h2>", unsafe_allow_html=True)
 
 #Teste##################################################################################
 # Dados textuais para o carrossel
@@ -44,8 +42,7 @@ texts = [
 
 #Teste #############################################################################
 
-# Título do aplicativo
-st.title('Analisando os gráficos e histogramas do banco de dados')
+st.write(f"<h2 style='color:white;'>Analisando os gráficos e histogramas do banco de dados</h2>", unsafe_allow_html=True)
 
 st.write(f"<h3 style='color:white;'>Histogramas de rating e feedback</h3>", unsafe_allow_html=True)
 # Visualizar histogramas para os atributos numéricos (rating e feedback)
@@ -84,13 +81,11 @@ quantidade_negativas = df_negativos.shape[0]
 
 # Dados para o gráfico de pizza
 labels = ['Positivas', 'Negativas']
-sizes = [quantidade_positivas, quantidade_negativas]
-colors = ['#4CAF50', '#F44336']  # Verde para positivas, vermelho para negativas
+sizes = [quantidade_positivas, quantidade_negativas] 
 
 # Criar o gráfico de pizza
 fig, ax = plt.subplots(figsize=(10,4))
-colors = ['purple','gray']
-ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=180, colors=colors)
+ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=180)
 ax.axis('equal')  # Garantir que o gráfico seja um círculo
 ax.set_title('Gráfico de pizza para comparação de reviews')
 
