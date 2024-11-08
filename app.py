@@ -19,8 +19,6 @@ st.markdown("""
             font-family: 'Arial', sans-serif;
         }
     </style>
-    <div class="main-container">
-    </style>
 """, unsafe_allow_html=True)
 
 # Título do aplicativo
@@ -189,7 +187,7 @@ ax.set_ylabel('Frequência')
 plt.xticks(rotation=45)
 
 # Exibindo o gráfico no Streamlit
-#st.image('data\\image.png', use_column_width=True)
+st.image('imagens//image.png', use_column_width=True)
 
 
 st.write(f"<h5 style='color:white;'>Aplicando o vader sentiment dentro do banco de dados e categorizando a polaridade das classes desejadas, tivemos um resultado esperado de que a maioria das reviews seriam positivas, com as classes muito bom, bom e médio ultrapassando muito as avaliações neutras e negativas</h5>", unsafe_allow_html=True)
