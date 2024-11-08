@@ -14,8 +14,8 @@ st.markdown("""
     <style>
         /* Background */
         .stApp {
-            background-color: #8181FA;
-            color: #8181FA;
+            background-color: #0E1117;
+            color: #262730;
             font-family: 'Arial', sans-serif;
         }
     </style>
@@ -40,31 +40,7 @@ texts = [
     f"4. Por fim, alguns dados gerais sobre os números obtidos em uma primeira análise dentro do banco de dados."
         ]
 
-# Índice para rastrear a posição atual no carrossel
-current_index = st.session_state.get('current_index', 0)
-texto_atual= texts[current_index]
 
-# Botões para navegação
-col1, col2, col3 = st.columns([1,4,3])
-with col1:
-    # Botão de navegação para a esquerda
-    if st.button("◀️", key="anterior") and current_index > 0:
-        st.session_state['current_index'] = current_index - 1
-        
-with col2:
-    # Exibir o texto atual
-    titulo = texts[current_index]
-    cor = "white"
-    st.markdown(f"<h5 style='color:{cor}; text-align: center;'>{texts[current_index]}</h5>", unsafe_allow_html=True)
-    if current_index == 2:
-        st.write(base.head())
-    elif current_index == 3:
-        st.write(base.describe())
-
-with col3:
-    # Botão de navegação para a direita
-    if st.button("▶️", key="proximo") and current_index < len(texts) - 1:
-        st.session_state['current_index'] = current_index + 1
 
 #Teste #############################################################################
 
