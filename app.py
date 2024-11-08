@@ -88,14 +88,14 @@ st.write(f"<h5 style='color:white;'>A média do feedback é 0.92, e o valor máx
 
 st.write(f"<h5 style='color:white;'>Esses dados fornecem uma visão geral de que a maioria das avaliações e feedbacks são altamente positivos, com a maioria dos registros recebendo as melhores classificações e feedbacks possíveis.</h5>", unsafe_allow_html=True)     
 
-st.write("A maioria das notas (rating) foram boas, o que explica os valores 1 em feedback serem maiores também (levando em consideração que 1 representa um bom feedback e 0 um feedback ruim) e vice-versa.")
+#st.write("A maioria das notas (rating) foram boas, o que explica os valores 1 em feedback serem maiores também (levando em consideração que 1 representa um bom feedback e 0 um feedback ruim) e vice-versa.")
 
 # Verificar o tamanho dos textos das revisões
 base['review_length'] = base['verified_reviews'].fillna('').apply(len)
 #st.write("### Tamanho dos textos das revisões:")
 #st.write(base['review_length'].describe())
 
-st.write("O conjunto de dados possui 3150 revisões, com tamanho médio de 132 caracteres e desvio padrão de 182, o que indica uma grande variação nos tamanhos. Enquanto 25% das revisões têm até 30 caracteres, a mediana, ou ponto médio, é de 74 caracteres, mostrando um tamanho típico das revisões, pois não é afetada por textos muito longos. Já o 75º percentil indica que 25% das revisões têm 165 caracteres ou mais. O tamanho máximo registrado é de 2851 caracteres, sugerindo que algumas revisões são muito detalhadas.")
+#st.write("O conjunto de dados possui 3150 revisões, com tamanho médio de 132 caracteres e desvio padrão de 182, o que indica uma grande variação nos tamanhos. Enquanto 25% das revisões têm até 30 caracteres, a mediana, ou ponto médio, é de 74 caracteres, mostrando um tamanho típico das revisões, pois não é afetada por textos muito longos. Já o 75º percentil indica que 25% das revisões têm 165 caracteres ou mais. O tamanho máximo registrado é de 2851 caracteres, sugerindo que algumas revisões são muito detalhadas.")
 
 # DataFrames de reviews positivas e negativas
 df_positivos = base[base['rating'] > 3]
