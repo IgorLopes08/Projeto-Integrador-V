@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import streamlit as st
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from streamlit_carousel import carousel
 
 # Configurando a página para sempre usar o wide mode
 #st.set_page_config(layout="wide")
