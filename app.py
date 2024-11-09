@@ -28,10 +28,7 @@ st.write(f"<h1 style='color:white;'>Análise de Reviews da Amazon Alexa</h1>", u
 base = pd.read_csv('data//amazon_alexa.tsv', sep='\t')  # Usando sep='\t' para arquivos TSV
 
 st.write(f"<h3 style='color:white;'>Base utilizada</h3>", unsafe_allow_html=True)
-st.write(base.head())
-st.write(base.head())
-st.write(base.head())
-st.write(base.head())
+st.table(base.head()) 
 
 st.write(f"<h2 style='color:white;'>Analisando os gráficos e histogramas do banco de dados</h2>", unsafe_allow_html=True)
 
