@@ -27,6 +27,8 @@ st.write(f"<h1 style='color:white;'>Análise de Reviews da Amazon Alexa</h1>", u
 # Carregar a base de dados
 base = pd.read_csv('data//amazon_alexa.tsv', sep='\t')  # Usando sep='\t' para arquivos TSV
 
+st.write(f"<h3 style='color:white;'>Base utilizada</h3>", unsafe_allow_html=True)
+st.write(base.head())
 
 st.write(f"<h2 style='color:white;'>Analisando os gráficos e histogramas do banco de dados</h2>", unsafe_allow_html=True)
 
@@ -39,11 +41,11 @@ sns.histplot(base['feedback'], kde=True, ax=axs[1])
 axs[1].set_title('Histograma do Feedback')
 st.pyplot(fig)
 
-st.write(f"<h3 style='color:white;'>RATING:</h3>", unsafe_allow_html=True)
+st.write(f"<h4 style='color:white;'>RATING:</h4>", unsafe_allow_html=True)
 st.write(f"<h5 style='color:white;'>A média das avaliações é 4.46, indicando que, em geral, as avaliações são bastante positivas. O desvio padrão de 1.07 sugere que há alguma variação nas avaliações, mas a maioria está concentrada perto da nota máxima de 5. A mediana e o percentil de 75 mostram que muitas avaliações são 5, o que reforça a tendência de avaliações elevadas.</h5>", unsafe_allow_html=True)
 
-st.write(f"<h3 style='color:white;'>FEEDBACK:</h3>", unsafe_allow_html=True)
-st.write(f"<h5 style='color:white;'>A média do feedback é 0.92, e o valor máximo é 1.00, o que indica que o feedback é frequentemente positivo (ou seja, 1). O desvio padrão é baixo, o que sugere que há pouca variação no feedback, com a maioria dos valores sendo 1.</h5>", unsafe_allow_html=True)     
+st.write(f"<h4 style='color:white;'>FEEDBACK:</h4>", unsafe_allow_html=True)
+st.write(f"<h5 style='color:white;'>A média do feedback é 0.92 sendo 1.00 considerado uma avaliação positivas, o que indica que o feedback é frequentemente positivo (ou seja, 1). O desvio padrão é baixo, o que sugere que há pouca variação no feedback, com a maioria dos valores sendo de fato 1.</h5>", unsafe_allow_html=True)     
 
 st.write(f"<h5 style='color:white;'>Esses dados fornecem uma visão geral de que a maioria das avaliações e feedbacks são altamente positivos, com a maioria dos registros recebendo as melhores classificações e feedbacks possíveis.</h5>", unsafe_allow_html=True)     
 
@@ -113,18 +115,12 @@ base['sentiment'] = base['verified_reviews'].apply(get_vader_sentiment)
 
 # Função para classificar os sentimentos
 def categorize_sentiment(polarity):
-    if polarity >= 0.8:
-        return 'Muito Bom'
-    elif 0.5 <= polarity < 0.8:
+    if polarity >= 0.2:
         return 'Bom'
-    elif 0.2 <= polarity < 0.5:
-        return 'Médio'
-    elif -0.2 < polarity < 0.2:
+    elif -0.2 <= polarity < 0.2:
         return 'Neutro'
-    elif -0.5 <= polarity <= -0.2:
-        return 'Ruim'
     else:
-        return 'Péssimo'
+        return 'Ruim'
 
 # Aplicando a classificação
 base['sentiment_category'] = base['sentiment'].apply(categorize_sentiment)
@@ -142,17 +138,15 @@ ax.set_title('Classificação dos Sentimentos')
 ax.set_xlabel('Categorias de Sentimento')
 ax.set_ylabel('Frequência')
 plt.xticks(rotation=45)
-
-# Exibindo o gráfico no Streamlit
-st.image('imagens//image.png', use_column_width=True)
+st.pyplot(fig)
 
 
-st.write(f"<h5 style='color:white;'>Aplicando o vader sentiment dentro do banco de dados e categorizando a polaridade das classes desejadas, tivemos um resultado esperado de que a maioria das reviews seriam positivas, com as classes muito bom, bom e médio ultrapassando muito as avaliações neutras e negativas</h5>", unsafe_allow_html=True)
+st.write(f"<h5 style='color:white;'>Aplicando o vader sentiment dentro do banco de dados e categorizando a polaridade das classes desejadas, tivemos um resultado esperado de que a maioria das reviews seriam positivas, com as classes bom ultrapassando muito as avaliações neutras e negativas</h5>", unsafe_allow_html=True)
 
 st.write("<h3 style='color:white;'>Entendendo a polarização dos dados</h3>", unsafe_allow_html=True)
 # Criando um histograma para a distribuição de sentimento
 fig, ax = plt.subplots(figsize=(10, 6))
-ax.hist(base['sentiment'], bins=20, color='skyblue', edgecolor='black')
+ax.hist(base['sentiment'], bins=10, color='skyblue', edgecolor='black')
 ax.set_title('Distribuição dos Sentimentos')
 ax.set_xlabel('Sentimento')
 ax.set_ylabel('Frequência')
